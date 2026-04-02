@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Academics | Crescent Model Higher Secondary School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'crescent-blue': '#1e3a8a', // Deep Blue
+                        'crescent-light-blue': '#3b82f6', // Lighter Blue
+                        'crescent-maroon': '#7f1d1d', // Deep Maroon
+                        'crescent-light-maroon': '#b91c1c', // Lighter Maroon
+                        'crescent-black': '#0f172a', // Soft Black/Slate
+                        'crescent-gold': '#d4af37',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #7f1d1d;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.1), rgba(127, 29, 29, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.2), rgba(127, 29, 29, 0.2));
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #60a5fa, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #0f172a;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top-color: #3b82f6;
+            border-right-color: #b91c1c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Timeline Styles */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #b91c1c);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-crescent-black text-slate-200 font-sans antialiased selection:bg-crescent-maroon selection:text-white overflow-x-hidden">
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 flex justify-between items-center glass border-b-0">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-crescent-blue to-crescent-maroon flex items-center justify-center text-white font-bold font-serif text-xl shadow-lg border border-crescent-gold/30">
+                C
+            </div>
+            <div class="flex flex-col">
+                <span class="text-sm lg:text-base font-bold tracking-wider text-white uppercase">Crescent Model</span>
+                <span class="text-xs text-crescent-gold tracking-widest">Higher Secondary School</span>
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#intro"
+                class="nav-link text-sm uppercase tracking-widest hover:text-crescent-light-blue transition-colors relative group">
+                Introduction
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-crescent-maroon transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#gallery"
+                class="nav-link text-sm uppercase tracking-widest hover:text-crescent-light-blue transition-colors relative group">
+                Gallery
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-crescent-maroon transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#curriculum"
+                class="nav-link text-sm uppercase tracking-widest hover:text-crescent-light-blue transition-colors relative group">
+                Curriculum
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-crescent-maroon transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#work"
+                class="nav-link text-sm uppercase tracking-widest hover:text-crescent-light-blue transition-colors relative group">
+                Work
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-crescent-maroon transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#professional-development"
+                class="nav-link text-sm uppercase tracking-widest hover:text-crescent-light-blue transition-colors relative group">
+                Professional Development
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-crescent-maroon transition-all group-hover:w-full"></span>
+            </a>
+            <button
+                class="px-5 py-2 bg-gradient-to-r from-crescent-blue to-crescent-maroon rounded-full text-xs font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all transform hover:scale-105 border border-white/10">
+                Student Portal
+            </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-crescent-black/95 z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8 md:hidden backdrop-blur-xl">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#intro"
+            class="mobile-link text-2xl font-serif text-white hover:text-crescent-light-blue">Introduction</a>
+        <a href="#gallery" class="mobile-link text-2xl font-serif text-white hover:text-crescent-light-blue">Gallery</a>
+        <a href="#curriculum"
+            class="mobile-link text-2xl font-serif text-white hover:text-crescent-light-blue">Curriculum</a>
+        <a href="#work" class="mobile-link text-2xl font-serif text-white hover:text-crescent-light-blue">Work</a>
+        <a href="#professional-development"
+            class="mobile-link text-2xl font-serif text-white hover:text-crescent-light-blue">Professional
+            Development</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Canvas Background -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+
+        <!-- Overlay Gradient -->
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-crescent-black/30 via-crescent-blue/20 to-crescent-black z-10">
+        </div>
+
+        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto mt-16">
+            <div
+                class="inline-block mb-4 px-4 py-1 rounded-full border border-crescent-gold/30 bg-crescent-gold/10 backdrop-blur-sm">
+                <span class="text-crescent-gold text-xs font-bold tracking-[0.2em] uppercase">Excellence in
+                    Education</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight animate-fade-in-up">
+                Department of <br>
+                <span class="text-gradient">Academics</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up"
+                style="animation-delay: 0.2s;">
+                Shaping the minds of tomorrow through rigorous curriculum, innovative teaching, and a commitment to
+                lifelong learning at Crescent Model Higher Secondary School.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up"
+                style="animation-delay: 0.4s;">
+                <a href="#curriculum"
+                    class="px-8 py-4 bg-white text-crescent-black font-bold rounded hover:bg-crescent-light-blue hover:text-white transition-colors shadow-lg">
+                    Explore Curriculum
+                </a>
+                <a href="#intro"
+                    class="px-8 py-4 border border-white/30 text-white font-bold rounded hover:bg-white/10 transition-colors backdrop-blur-sm">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#intro" class="text-white/50 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Section 1: Introduction -->
+    <section id="intro" class="py-24 px-6 lg:px-12 relative overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-crescent-blue/5 to-transparent pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="space-y-8 reveal-on-scroll">
+                    <div class="flex items-center gap-4">
+                        <div class="h-px w-12 bg-crescent-maroon"></div>
+                        <span class="text-crescent-light-blue uppercase tracking-widest text-sm font-bold">About
+                            Us</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white">
+                        Cultivating <span class="text-crescent-light-maroon">Intellect</span> & Character
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        The Department of Academics at Crescent Model Higher Secondary School stands as the pillar of
+                        our institution's reputation. We believe that education is not merely about grades, but about
+                        igniting curiosity and fostering critical thinking.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        Our faculty comprises distinguished educators and scholars dedicated to providing a holistic
+                        learning environment. From state-of-the-art science laboratories to extensive digital libraries,
+                        we equip our students with the tools necessary to excel in a rapidly evolving world.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="p-4 border-l-2 border-crescent-blue bg-white/5">
+                            <h4 class="text-2xl font-bold text-white mb-1">25+</h4>
+                            <p class="text-sm text-slate-400">Years of Excellence</p>
+                        </div>
+                        <div class="p-4 border-l-2 border-crescent-maroon bg-white/5">
+                            <h4 class="text-2xl font-bold text-white mb-1">98%</h4>
+                            <p class="text-sm text-slate-400">Board Pass Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Content -->
+                <div class="relative reveal-on-scroll delay-200">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-crescent-blue to-crescent-maroon rounded-lg opacity-30 blur-lg">
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden shadow-2xl border border-white/10 group">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                            alt="Students Studying"
+                            class="w-full h-[500px] object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-crescent-black via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <p class="text-white font-serif text-xl italic">"Education is the passport to the future."
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Floating Badge -->
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-crescent-black border border-crescent-gold/30 p-4 rounded shadow-xl z-10">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-award text-crescent-gold text-2xl"></i>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase">Accredited by</p>
+                                <p class="text-white font-bold">Ministry of Education</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Gallery -->
+    <section id="gallery" class="py-24 bg-crescent-black relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-crescent-light-maroon uppercase tracking-widest text-sm font-bold">Visual
+                    Journey</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mt-2">Campus <span
+                        class="text-crescent-light-blue">Gallery</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-crescent-blue to-crescent-maroon mx-auto mt-6"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-4 mb-12 flex-wrap reveal-on-scroll">
+                <button
+                    class="filter-btn active px-6 py-2 rounded-full border border-white/20 text-sm uppercase tracking-wider hover:bg-white hover:text-crescent-black transition-all bg-white text-crescent-black"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn px-6 py-2 rounded-full border border-white/20 text-sm uppercase tracking-wider hover:bg-white hover:text-crescent-black transition-all text-slate-300"
+                    data-filter="labs">Labs</button>
+                <button
+                    class="filter-btn px-6 py-2 rounded-full border border-white/20 text-sm uppercase tracking-wider hover:bg-white hover:text-crescent-black transition-all text-slate-300"
+                    data-filter="events">Events</button>
+                <button
+                    class="filter-btn px-6 py-2 rounded-full border border-white/20 text-sm uppercase tracking-wider hover:bg-white hover:text-crescent-black transition-all text-slate-300"
+                    data-filter="library">Library</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <!-- Item 1 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                    data-category="labs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Science Lab"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-crescent-blue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col">
+                        <h3
+                            class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Advanced Physics Lab</h3>
+                        <p
+                            class="text-crescent-gold text-sm mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            State-of-the-art equipment</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                    data-category="events">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Debate Competition"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-crescent-maroon/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col">
+                        <h3
+                            class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Annual Debate</h3>
+                        <p
+                            class="text-white text-sm mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            Championship 2025</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                    data-category="library">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Library"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-crescent-blue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col">
+                        <h3
+                            class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Digital Library</h3>
+                        <p
+                            class="text-crescent-gold text-sm mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            50,000+ Volumes</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                    data-category="labs">
+                    <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Computer Lab"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-crescent-maroon/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col">
+                        <h3
+                            class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            ICT Lab</h3>
+                        <p
+                            class="text-white text-sm mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            Modern Computing</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                    data-category="events">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Graduation"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-crescent-blue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col">
+                        <h3
+                            class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Graduation Day</h3>
+                        <p
+                            class="text-crescent-gold text-sm mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            Class of 2025</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer"
+                    data-category="library">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Study Area"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-crescent-maroon/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col">
+                        <h3
+                            class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Reading Room</h3>
+                        <p
+                            class="text-white text-sm mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            Quiet Study Zones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Curriculum -->
+    <section id="curriculum" class="py-24 px-6 lg:px-12 bg-gradient-to-b from-crescent-black to-[#1a1f2e]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Sidebar / Sticky Header -->
+                <div class="lg:w-1/3 reveal-on-scroll">
+                    <span class="text-crescent-light-blue uppercase tracking-widest text-sm font-bold">Academic
+                        Structure</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mt-2 mb-6">Our <br><span
+                            class="text-crescent-light-maroon">Curriculum</span></h2>
+                    <p class="text-slate-400 mb-8">
+                        We offer a comprehensive academic program designed to challenge and inspire. Our curriculum is
+                        regularly updated to meet international standards while preserving cultural values.
+                    </p>
+
+                    <!-- Interactive Tabs -->
+                    <div class="flex flex-col gap-2 bg-white/5 p-2 rounded-lg backdrop-blur-sm border border-white/10">
+                        <button
+                            class="curriculum-tab active text-left px-6 py-4 rounded transition-all duration-300 flex justify-between items-center group bg-crescent-blue/20 border-l-4 border-crescent-blue"
+                            data-target="secondary">
+                            <span class="font-bold text-white">Secondary School</span>
+                            <i class="fas fa-chevron-right text-crescent-blue opacity-100 transition-opacity"></i>
+                        </button>
+                        <button
+                            class="curriculum-tab text-left px-6 py-4 rounded transition-all duration-300 flex justify-between items-center group hover:bg-white/5 border-l-4 border-transparent"
+                            data-target="higher">
+                            <span class="font-bold text-slate-400 group-hover:text-white">Higher Secondary</span>
+                            <i
+                                class="fas fa-chevron-right text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </button>
+                        <button
+                            class="curriculum-tab text-left px-6 py-4 rounded transition-all duration-300 flex justify-between items-center group hover:bg-white/5 border-l-4 border-transparent"
+                            data-target="assessment">
+                            <span class="font-bold text-slate-400 group-hover:text-white">Assessment</span>
+                            <i
+                                class="fas fa-chevron-right text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content Area -->
+                <div class="lg:w-2/3 relative min-h-[400px] reveal-on-scroll delay-100">
+
+                    <!-- Secondary Content -->
+                    <div id="secondary"
+                        class="curriculum-content absolute inset-0 transition-all duration-500 opacity-100 translate-x-0 z-10">
+                        <div class="glass-card p-8 rounded-xl h-full">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-crescent-blue/20 flex items-center justify-center text-crescent-light-blue text-xl">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <h3 class="text-2xl font-serif font-bold text-white">Secondary School (Grades 9-10)</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-crescent-maroon mt-1"></i>
+                                    <div>
+                                        <h4 class="text-white font-bold">Core Sciences</h4>
+                                        <p class="text-slate-400 text-sm">Physics, Chemistry, Biology with practical lab
+                                            work every week.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-crescent-maroon mt-1"></i>
+                                    <div>
+                                        <h4 class="text-white font-bold">Mathematics & Computer</h4>
+                                        <p class="text-slate-400 text-sm">Advanced algebra, geometry, and introduction
+                                            to programming.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-crescent-maroon mt-1"></i>
+                                    <div>
+                                        <h4 class="text-white font-bold">Languages & Arts</h4>
+                                        <p class="text-slate-400 text-sm">English Literature, Urdu, and Islamic
+                                            Studies/Ethics.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="mt-8 pt-6 border-t border-white/10">
+                                <a href="#"
+                                    class="text-crescent-light-blue hover:text-white transition-colors text-sm font-bold uppercase tracking-wider flex items-center gap-2">
+                                    Download Syllabus <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Higher Secondary Content (Hidden by default) -->
+                    <div id="higher"
+                        class="curriculum-content absolute inset-0 transition-all duration-500 opacity-0 translate-x-10 pointer-events-none">
+                        <div class="glass-card p-8 rounded-xl h-full">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-crescent-maroon/20 flex items-center justify-center text-crescent-light-maroon text-xl">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-2xl font-serif font-bold text-white">Higher Secondary (Grades 11-12)
+                                </h3>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div
+                                    class="p-4 bg-white/5 rounded border border-white/5 hover:border-crescent-maroon/50 transition-colors">
+                                    <h4 class="text-crescent-gold font-bold mb-2">Pre-Engineering</h4>
+                                    <p class="text-slate-400 text-xs">Physics, Chemistry, Mathematics</p>
+                                </div>
+                                <div
+                                    class="p-4 bg-white/5 rounded border border-white/5 hover:border-crescent-maroon/50 transition-colors">
+                                    <h4 class="text-crescent-gold font-bold mb-2">Pre-Medical</h4>
+                                    <p class="text-slate-400 text-xs">Physics, Chemistry, Biology</p>
+                                </div>
+                                <div
+                                    class="p-4 bg-white/5 rounded border border-white/5 hover:border-crescent-maroon/50 transition-colors">
+                                    <h4 class="text-crescent-gold font-bold mb-2">ICS</h4>
+                                    <p class="text-slate-400 text-xs">Computer Science, Physics, Mathematics</p>
+                                </div>
+                                <div
+                                    class="p-4 bg-white/5 rounded border border-white/5 hover:border-crescent-maroon/50 transition-colors">
+                                    <h4 class="text-crescent-gold font-bold mb-2">Humanities</h4>
+                                    <p class="text-slate-400 text-xs">History, Geography, Political Science</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assessment Content (Hidden by default) -->
+                    <div id="assessment"
+                        class="curriculum-content absolute inset-0 transition-all duration-500 opacity-0 translate-x-10 pointer-events-none">
+                        <div class="glass-card p-8 rounded-xl h-full">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-crescent-gold/20 flex items-center justify-center text-crescent-gold text-xl">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h3 class="text-2xl font-serif font-bold text-white">Evaluation System</h3>
+                            </div>
+                            <p class="text-slate-300 mb-6">Our assessment is continuous and comprehensive, focusing on
+                                both academic rigor and co-curricular development.</p>
+
+                            <div class="space-y-4">
+                                <div class="w-full bg-white/10 rounded-full h-4 overflow-hidden">
+                                    <div class="bg-crescent-blue h-full rounded-full" style="width: 70%"></div>
+                                </div>
+                                <div class="flex justify-between text-xs text-slate-400 uppercase tracking-wider">
+                                    <span>Internal Assessments (70%)</span>
+                                    <span>Final Exams (30%)</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 bg-crescent-blue/10 border-l-2 border-crescent-blue rounded">
+                                <p class="text-sm text-slate-300 italic">"We utilize a mix of quizzes, projects, and
+                                    terminal exams to ensure a 360-degree evaluation of student potential."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Work -->
+    <section id="work" class="py-24 px-6 lg:px-12 relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-crescent-blue/10 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-crescent-gold uppercase tracking-widest text-sm font-bold">Beyond the Classroom</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mt-2">Student <span
+                        class="text-crescent-light-blue">Work</span> & Projects</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Showcasing the creativity, innovation, and dedication
+                    of our students through their academic and extracurricular achievements.</p>
+            </div>
+
+            <!-- Work Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Card 1 -->
+                <div class="glass-card rounded-xl overflow-hidden group reveal-on-scroll">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Science Project"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-crescent-maroon text-white text-xs font-bold px-3 py-1 rounded-full">
+                            Science</div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            Robotics Workshop</h3>
+                        <p class="text-slate-400 text-sm mb-4">Students built autonomous line-following robots using
+                            Arduino microcontrollers.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <span class="text-xs text-slate-500">By: Grade 12-A</span>
+                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                                    class="fas fa-arrow-right"></i> View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-xl overflow-hidden group reveal-on-scroll delay-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Art Exhibition"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-crescent-blue text-white text-xs font-bold px-3 py-1 rounded-full">
+                            Arts</div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            Annual Art Exhibition</h3>
+                        <p class="text-slate-400 text-sm mb-4">A showcase of visual arts including oil painting,
+                            sculpture, and digital art.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <span class="text-xs text-slate-500">By: Art Club</span>
+                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                                    class="fas fa-arrow-right"></i> View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-xl overflow-hidden group reveal-on-scroll delay-200">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Debate"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-crescent-gold text-crescent-black text-xs font-bold px-3 py-1 rounded-full">
+                            Literature</div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            Inter-School Debate</h3>
+                        <p class="text-slate-400 text-sm mb-4">Championing critical thinking and public speaking skills
+                            across the district.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <span class="text-xs text-slate-500">By: Debate Society</span>
+                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                                    class="fas fa-arrow-right"></i> View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card rounded-xl overflow-hidden group reveal-on-scroll">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Community Service"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            Service</div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            Community Outreach</h3>
+                        <p class="text-slate-400 text-sm mb-4">Students organized a book drive and literacy camp for
+                            underprivileged children.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <span class="text-xs text-slate-500">By: Social Club</span>
+                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                                    class="fas fa-arrow-right"></i> View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-card rounded-xl overflow-hidden group reveal-on-scroll delay-100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Tech Project"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            Tech</div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            App Development</h3>
+                        <p class="text-slate-400 text-sm mb-4">Creation of a campus navigation app for new students by
+                            the CS department.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <span class="text-xs text-slate-500">By: CS Club</span>
+                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                                    class="fas fa-arrow-right"></i> View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="glass-card rounded-xl overflow-hidden group reveal-on-scroll delay-200">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Research"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-crescent-maroon text-white text-xs font-bold px-3 py-1 rounded-full">
+                            Research</div>
+                    </div>
+                    <div class="p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            Science Fair 2025</h3>
+                        <p class="text-slate-400 text-sm mb-4">Innovative projects on renewable energy and sustainable
+                            agriculture.</p>
+                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                            <span class="text-xs text-slate-500">By: Grade 11 & 12</span>
+                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                                    class="fas fa-arrow-right"></i> View</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-12 text-center">
+                <button
+                    class="px-8 py-3 border border-crescent-light-blue text-crescent-light-blue rounded hover:bg-crescent-light-blue hover:text-white transition-all uppercase text-sm tracking-widest font-bold">
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Professional Development (NEW) -->
+    <section id="professional-development"
+        class="py-24 px-6 lg:px-12 bg-gradient-to-b from-[#1a1f2e] to-crescent-black relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-64 h-64 bg-crescent-blue/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-64 h-64 bg-crescent-maroon/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-crescent-light-blue uppercase tracking-widest text-sm font-bold">Continuous
+                    Growth</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mt-2">Professional <span
+                        class="text-crescent-light-maroon">Development</span></h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Empowering our educators with cutting-edge training,
+                    workshops, and collaborative opportunities to ensure the highest standards of teaching excellence.
+                </p>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="timeline-line"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+
+                    <!-- Item 1: Left -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal-on-scroll">
+                        <div class="md:w-1/2 md:pr-12 md:text-right text-center mb-4 md:mb-0">
+                            <div
+                                class="glass-card p-6 rounded-xl inline-block text-left md:text-right hover:border-crescent-blue/50 transition-all">
+                                <div class="flex items-center gap-3 mb-2 md:justify-end">
+                                    <h3 class="text-xl font-bold text-white">Pedagogical Workshops</h3>
+                                    <i class="fas fa-chalkboard-teacher text-crescent-light-blue"></i>
+                                </div>
+                                <p class="text-slate-400 text-sm">Monthly intensive sessions focusing on modern teaching
+                                    methodologies, classroom management, and student psychology.</p>
+                                <span
+                                    class="inline-block mt-3 text-xs text-crescent-gold font-bold uppercase tracking-wider">Monthly</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-crescent-blue rounded-full border-4 border-crescent-black z-10 hidden md:block">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- Item 2: Right -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal-on-scroll">
+                        <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-crescent-maroon rounded-full border-4 border-crescent-black z-10 hidden md:block">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+                            <div
+                                class="glass-card p-6 rounded-xl inline-block text-left hover:border-crescent-maroon/50 transition-all">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fas fa-laptop-code text-crescent-light-maroon"></i>
+                                    <h3 class="text-xl font-bold text-white">Digital Literacy Training</h3>
+                                </div>
+                                <p class="text-slate-400 text-sm">Certification programs in educational technology,
+                                    AI-assisted learning tools, and virtual classroom management.</p>
+                                <span
+                                    class="inline-block mt-3 text-xs text-crescent-gold font-bold uppercase tracking-wider">Quarterly</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Left -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal-on-scroll">
+                        <div class="md:w-1/2 md:pr-12 md:text-right text-center mb-4 md:mb-0">
+                            <div
+                                class="glass-card p-6 rounded-xl inline-block text-left md:text-right hover:border-crescent-gold/50 transition-all">
+                                <div class="flex items-center gap-3 mb-2 md:justify-end">
+                                    <h3 class="text-xl font-bold text-white">Leadership Seminars</h3>
+                                    <i class="fas fa-users-cog text-crescent-gold"></i>
+                                </div>
+                                <p class="text-slate-400 text-sm">Advanced training for department heads and senior
+                                    faculty in academic leadership, curriculum planning, and institutional management.
+                                </p>
+                                <span
+                                    class="inline-block mt-3 text-xs text-crescent-gold font-bold uppercase tracking-wider">Bi-Annual</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-crescent-gold rounded-full border-4 border-crescent-black z-10 hidden md:block">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- Item 4: Right -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal-on-scroll">
+                        <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-crescent-blue rounded-full border-4 border-crescent-black z-10 hidden md:block">
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+                            <div
+                                class="glass-card p-6 rounded-xl inline-block text-left hover:border-crescent-blue/50 transition-all">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fas fa-globe text-crescent-light-blue"></i>
+                                    <h3 class="text-xl font-bold text-white">International Conferences</h3>
+                                </div>
+                                <p class="text-slate-400 text-sm">Funding and support for faculty to attend global
+                                    education summits, present research papers, and collaborate with international
+                                    institutions.</p>
+                                <span
+                                    class="inline-block mt-3 text-xs text-crescent-gold font-bold uppercase tracking-wider">Annual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 reveal-on-scroll">
+                <div class="glass p-6 rounded-lg text-center border-t-2 border-crescent-blue">
+                    <h4 class="text-3xl font-bold text-white mb-1">85%</h4>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Faculty with Advanced Degrees</p>
+                </div>
+                <div class="glass p-6 rounded-lg text-center border-t-2 border-crescent-maroon">
+                    <h4 class="text-3xl font-bold text-white mb-1">40+</h4>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Workshops Conducted Yearly</p>
+                </div>
+                <div class="glass p-6 rounded-lg text-center border-t-2 border-crescent-gold">
+                    <h4 class="text-3xl font-bold text-white mb-1">100%</h4>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Teachers ICT Certified</p>
+                </div>
+                <div class="glass p-6 rounded-lg text-center border-t-2 border-crescent-blue">
+                    <h4 class="text-3xl font-bold text-white mb-1">15+</h4>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">International Collaborations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b1120] border-t border-white/5 pt-16 pb-8 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-br from-crescent-blue to-crescent-maroon flex items-center justify-center text-white font-bold font-serif border border-crescent-gold/30">
+                        C</div>
+                    <span class="font-bold text-white tracking-wider">CRESCENT MODEL</span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Dedicated to providing quality education and fostering a community of lifelong learners and future
+                    leaders.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-slate-400 hover:bg-crescent-blue hover:text-white transition-all"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-slate-400 hover:bg-crescent-blue hover:text-white transition-all"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-slate-400 hover:bg-crescent-blue hover:text-white transition-all"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Admissions</a></li>
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Faculty</a></li>
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Academic Calendar</a></li>
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Career Portal</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Departments</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Department of Science</a>
+                    </li>
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Department of Arts</a></li>
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Department of Sports</a>
+                    </li>
+                    <li><a href="#" class="hover:text-crescent-light-blue transition-colors">Student Affairs</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Contact</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-crescent-maroon"></i>
+                        <span>123 Education Lane,<br>Knowledge City, 54000</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-phone text-crescent-maroon"></i>
+                        <span>+92 300 1234567</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-crescent-maroon"></i>
+                        <span>info@crescentmodel.edu</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 pt-8 text-center">
+            <p class="text-slate-500 text-xs">&copy; 2026 Crescent Model Higher Secondary School. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Remove Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-crescent-black/90', 'shadow-lg', 'backdrop-blur-md');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-crescent-black/90', 'shadow-lg', 'backdrop-blur-md');
+                navbar.classList.remove('py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isClosed = mobileMenu.classList.contains('translate-x-full');
+            if (isClosed) {
+                mobileMenu.classList.remove('translate-x-full');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Gallery Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-white', 'text-crescent-black');
+                    b.classList.add('text-slate-300');
+                });
+                // Add active to clicked
+                btn.classList.remove('text-slate-300');
+                btn.classList.add('bg-white', 'text-crescent-black');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Curriculum Tabs
+        const tabs = document.querySelectorAll('.curriculum-tab');
+        const contents = document.querySelectorAll('.curriculum-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Reset Tabs
+                tabs.forEach(t => {
+                    t.classList.remove('bg-crescent-blue/20', 'border-crescent-blue');
+                    t.classList.add('border-transparent');
+                    t.querySelector('span').classList.remove('text-white');
+                    t.querySelector('span').classList.add('text-slate-400');
+                    t.querySelector('i').classList.remove('text-crescent-blue', 'opacity-100');
+                    t.querySelector('i').classList.add('text-slate-400', 'opacity-0');
+                });
+
+                // Activate Clicked Tab
+                tab.classList.remove('border-transparent');
+                tab.classList.add('bg-crescent-blue/20', 'border-crescent-blue');
+                tab.querySelector('span').classList.remove('text-slate-400');
+                tab.querySelector('span').classList.add('text-white');
+                tab.querySelector('i').classList.remove('text-slate-400', 'opacity-0');
+                tab.querySelector('i').classList.add('text-crescent-blue', 'opacity-100');
+
+                // Show Content
+                const targetId = tab.getAttribute('data-target');
+
+                contents.forEach(content => {
+                    if (content.id === targetId) {
+                        content.classList.remove('opacity-0', 'translate-x-10', 'pointer-events-none');
+                        content.classList.add('opacity-100', 'translate-x-0', 'z-10');
+                    } else {
+                        content.classList.remove('opacity-100', 'translate-x-0', 'z-10');
+                        content.classList.add('opacity-0', 'translate-x-10', 'pointer-events-none');
+                    }
+                });
+            });
+        });
+
+        // Canvas Animation (Constellation Effect)
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.5)'; // Blue tint
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const numParticles = Math.min(window.innerWidth / 10, 100); // Responsive count
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+
+                // Draw connections
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(127, 29, 29, ${1 - distance / 150})`; // Maroon tint lines
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+
+    </script>
+</body>
+
+</html>
