@@ -24,6 +24,7 @@
                         'crescent-maroon': '#7f1d1d', // Deep Maroon
                         'crescent-light-maroon': '#b91c1c', // Lighter Maroon
                         'crescent-black': '#0f172a', // Soft Black/Slate
+                        'crescent-light-black': '#1e293b', // Lighter Slate/Black
                         'crescent-gold': '#d4af37',
                     },
                     fontFamily: {
@@ -33,11 +34,16 @@
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient-bg': 'gradient-shift 15s ease infinite',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'gradient-shift': {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
                         }
                     }
                 }
@@ -95,7 +101,7 @@
         #loader {
             position: fixed;
             inset: 0;
-            background: #0f172a;
+            background: radial-gradient(circle at center, #1e293b, #0f172a);
             z-index: 9999;
             display: flex;
             justify-content: center;
@@ -142,7 +148,7 @@
 </head>
 
 <body
-    class="bg-crescent-black text-slate-200 font-sans antialiased selection:bg-crescent-maroon selection:text-white overflow-x-hidden">
+    class="bg-gradient-to-br from-crescent-light-black via-crescent-maroon/20 to-crescent-light-blue/20 text-slate-200 font-sans antialiased selection:bg-crescent-maroon selection:text-white overflow-x-hidden min-h-screen bg-fixed">
 
     <!-- Loader -->
     <div id="loader">
