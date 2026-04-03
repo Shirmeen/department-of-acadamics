@@ -28,6 +28,7 @@
                         'crescent-black': '#0f172a', // Soft Black/Slate
                         'crescent-light-black': '#1e293b', // Lighter Slate/Black
                         'crescent-gold': '#d4af37',
+                        'crescent-vibrant-blue': '#3b82f6', // Corrected token registration
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
@@ -52,101 +53,7 @@
             }
         }
     </script>
-    <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #7f1d1d;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #b91c1c;
-        }
-
-        /* Glassmorphism Utilities */
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .glass-card {
-            background: linear-gradient(145deg, rgba(30, 58, 138, 0.1), rgba(127, 29, 29, 0.1));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            background: linear-gradient(145deg, rgba(30, 58, 138, 0.2), rgba(127, 29, 29, 0.2));
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(to right, #60a5fa, #f87171);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Loader */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at center, #1e293b, #0f172a);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader-circle {
-            width: 50px;
-            height: 50px;
-            border: 3px solid transparent;
-            border-top-color: #3b82f6;
-            border-right-color: #b91c1c;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Timeline Styles */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b82f6, #b91c1c);
-        }
-
-        @media (max-width: 768px) {
-            .timeline-line {
-                left: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body
@@ -310,13 +217,13 @@
                     </p>
 
                     <div class="grid grid-cols-2 gap-6 pt-4">
-                        <div class="p-4 border-l-2 border-crescent-blue bg-white/5">
-                            <h4 class="text-2xl font-bold text-white mb-1">25+</h4>
-                            <p class="text-sm text-slate-400">Years of Excellence</p>
+                        <div class="p-4 border-l-2 border-crescent-blue bg-slate-200/50">
+                            <h4 class="text-2xl font-bold text-slate-900 mb-1">25+</h4>
+                            <p class="text-sm text-slate-700">Years of Excellence</p>
                         </div>
-                        <div class="p-4 border-l-2 border-crescent-maroon bg-white/5">
-                            <h4 class="text-2xl font-bold text-white mb-1">98%</h4>
-                            <p class="text-sm text-slate-400">Board Pass Rate</p>
+                        <div class="p-4 border-l-2 border-crescent-maroon bg-slate-200/50">
+                            <h4 class="text-2xl font-bold text-slate-900 mb-1">98%</h4>
+                            <p class="text-sm text-slate-700">Board Pass Rate</p>
                         </div>
                     </div>
                 </div>
@@ -540,33 +447,33 @@
                         <div class="glass-card p-8 rounded-xl h-full">
                             <div class="flex items-center gap-4 mb-6">
                                 <div
-                                    class="w-12 h-12 rounded-full bg-crescent-blue/20 flex items-center justify-center text-crescent-light-blue text-xl">
+                                    class="w-12 h-12 rounded-full bg-crescent-blue/20 flex items-center justify-center text-crescent-vibrant-blue text-xl">
                                     <i class="fas fa-book-open"></i>
                                 </div>
-                                <h3 class="text-2xl font-serif font-bold text-white">Secondary School (Grades 9-10)</h3>
+                                <h3 class="text-2xl font-serif font-bold text-slate-900">Secondary School (Grades 9-10)</h3>
                             </div>
                             <ul class="space-y-4">
                                 <li class="flex items-start gap-3">
                                     <i class="fas fa-check-circle text-crescent-maroon mt-1"></i>
                                     <div>
-                                        <h4 class="text-white font-bold">Core Sciences</h4>
-                                        <p class="text-slate-400 text-sm">Physics, Chemistry, Biology with practical lab
+                                        <h4 class="text-slate-900 font-bold">Core Sciences</h4>
+                                        <p class="text-slate-700 text-sm">Physics, Chemistry, Biology with practical lab
                                             work every week.</p>
                                     </div>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <i class="fas fa-check-circle text-crescent-maroon mt-1"></i>
                                     <div>
-                                        <h4 class="text-white font-bold">Mathematics & Computer</h4>
-                                        <p class="text-slate-400 text-sm">Advanced algebra, geometry, and introduction
+                                        <h4 class="text-slate-900 font-bold">Mathematics & Computer</h4>
+                                        <p class="text-slate-700 text-sm">Advanced algebra, geometry, and introduction
                                             to programming.</p>
                                     </div>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <i class="fas fa-check-circle text-crescent-maroon mt-1"></i>
                                     <div>
-                                        <h4 class="text-white font-bold">Languages & Arts</h4>
-                                        <p class="text-slate-400 text-sm">English Literature, Urdu, and Islamic
+                                        <h4 class="text-slate-900 font-bold">Languages & Arts</h4>
+                                        <p class="text-slate-700 text-sm">English Literature, Urdu, and Islamic
                                             Studies/Ethics.</p>
                                     </div>
                                 </li>
@@ -659,10 +566,10 @@
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal-on-scroll">
-                <span class="text-crescent-gold uppercase tracking-widest text-sm font-bold">Beyond the Classroom</span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mt-2">Student <span
-                        class="text-crescent-light-blue">Work</span> & Projects</h2>
-                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Showcasing the creativity, innovation, and dedication
+                <span class="text-blue-500 uppercase tracking-widest text-sm font-bold">Beyond the Classroom</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mt-2">Student <span
+                        class="text-crescent-blue">Work</span> & Projects</h2>
+                <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Showcasing the creativity, innovation, and dedication
                     of our students through their academic and extracurricular achievements.</p>
             </div>
 
@@ -681,14 +588,14 @@
                     </div>
                     <div class="p-6">
                         <h3
-                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            class="text-xl font-bold text-slate-800 mb-2 group-hover:text-crescent-blue transition-colors">
                             Robotics Workshop</h3>
-                        <p class="text-slate-400 text-sm mb-4">Students built autonomous line-following robots using
+                        <p class="text-slate-600 text-sm mb-4">Students built autonomous line-following robots using
                             Arduino microcontrollers.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div class="flex items-center justify-between border-t border-slate-200 pt-4">
                             <span class="text-xs text-slate-500">By: Grade 12-A</span>
-                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
-                                    class="fas fa-arrow-right"></i> View</button>
+                            <button class="text-crescent-blue hover:text-slate-900 text-sm transition-colors"><i
+                                     class="fas fa-arrow-right"></i> View</button>
                         </div>
                     </div>
                 </div>
@@ -705,13 +612,13 @@
                     </div>
                     <div class="p-6">
                         <h3
-                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            class="text-xl font-bold text-slate-800 mb-2 group-hover:text-crescent-blue transition-colors">
                             Annual Art Exhibition</h3>
-                        <p class="text-slate-400 text-sm mb-4">A showcase of visual arts including oil painting,
+                        <p class="text-slate-600 text-sm mb-4">A showcase of visual arts including oil painting,
                             sculpture, and digital art.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div class="flex items-center justify-between border-t border-slate-200 pt-4">
                             <span class="text-xs text-slate-500">By: Art Club</span>
-                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                            <button class="text-crescent-blue hover:text-slate-900 text-sm transition-colors"><i
                                     class="fas fa-arrow-right"></i> View</button>
                         </div>
                     </div>
@@ -729,13 +636,13 @@
                     </div>
                     <div class="p-6">
                         <h3
-                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            class="text-xl font-bold text-slate-800 mb-2 group-hover:text-crescent-blue transition-colors">
                             Inter-School Debate</h3>
-                        <p class="text-slate-400 text-sm mb-4">Championing critical thinking and public speaking skills
+                        <p class="text-slate-600 text-sm mb-4">Championing critical thinking and public speaking skills
                             across the district.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div class="flex items-center justify-between border-t border-slate-200 pt-4">
                             <span class="text-xs text-slate-500">By: Debate Society</span>
-                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                            <button class="text-crescent-blue hover:text-slate-900 text-sm transition-colors"><i
                                     class="fas fa-arrow-right"></i> View</button>
                         </div>
                     </div>
@@ -753,13 +660,13 @@
                     </div>
                     <div class="p-6">
                         <h3
-                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            class="text-xl font-bold text-slate-800 mb-2 group-hover:text-crescent-blue transition-colors">
                             Community Outreach</h3>
-                        <p class="text-slate-400 text-sm mb-4">Students organized a book drive and literacy camp for
+                        <p class="text-slate-600 text-sm mb-4">Students organized a book drive and literacy camp for
                             underprivileged children.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div class="flex items-center justify-between border-t border-slate-200 pt-4">
                             <span class="text-xs text-slate-500">By: Social Club</span>
-                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                            <button class="text-crescent-blue hover:text-slate-900 text-sm transition-colors"><i
                                     class="fas fa-arrow-right"></i> View</button>
                         </div>
                     </div>
@@ -777,13 +684,13 @@
                     </div>
                     <div class="p-6">
                         <h3
-                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            class="text-xl font-bold text-slate-800 mb-2 group-hover:text-crescent-blue transition-colors">
                             App Development</h3>
-                        <p class="text-slate-400 text-sm mb-4">Creation of a campus navigation app for new students by
+                        <p class="text-slate-600 text-sm mb-4">Creation of a campus navigation app for new students by
                             the CS department.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div class="flex items-center justify-between border-t border-slate-200 pt-4">
                             <span class="text-xs text-slate-500">By: CS Club</span>
-                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                            <button class="text-crescent-blue hover:text-slate-900 text-sm transition-colors"><i
                                     class="fas fa-arrow-right"></i> View</button>
                         </div>
                     </div>
@@ -801,13 +708,13 @@
                     </div>
                     <div class="p-6">
                         <h3
-                            class="text-xl font-bold text-white mb-2 group-hover:text-crescent-light-blue transition-colors">
+                            class="text-xl font-bold text-slate-800 mb-2 group-hover:text-crescent-blue transition-colors">
                             Science Fair 2025</h3>
-                        <p class="text-slate-400 text-sm mb-4">Innovative projects on renewable energy and sustainable
+                        <p class="text-slate-600 text-sm mb-4">Innovative projects on renewable energy and sustainable
                             agriculture.</p>
-                        <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div class="flex items-center justify-between border-t border-slate-200 pt-4">
                             <span class="text-xs text-slate-500">By: Grade 11 & 12</span>
-                            <button class="text-crescent-gold hover:text-white text-sm transition-colors"><i
+                            <button class="text-crescent-blue hover:text-slate-900 text-sm transition-colors"><i
                                     class="fas fa-arrow-right"></i> View</button>
                         </div>
                     </div>
@@ -1037,228 +944,8 @@
         </div>
     </footer>
 
-    <script>
-        // Remove Loader
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 500);
-        });
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-crescent-black/90', 'shadow-lg', 'backdrop-blur-md');
-                navbar.classList.remove('py-4');
-                navbar.classList.add('py-2');
-            } else {
-                navbar.classList.remove('bg-crescent-black/90', 'shadow-lg', 'backdrop-blur-md');
-                navbar.classList.remove('py-2');
-                navbar.classList.add('py-4');
-            }
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            const isClosed = mobileMenu.classList.contains('translate-x-full');
-            if (isClosed) {
-                mobileMenu.classList.remove('translate-x-full');
-            } else {
-                mobileMenu.classList.add('translate-x-full');
-            }
-        }
-
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        // Intersection Observer for Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up');
-                    entry.target.style.opacity = '1';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-            el.style.opacity = '0';
-            observer.observe(el);
-        });
-
-        // Gallery Filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-white', 'text-crescent-black');
-                    b.classList.add('text-slate-300');
-                });
-                // Add active to clicked
-                btn.classList.remove('text-slate-300');
-                btn.classList.add('bg-white', 'text-crescent-black');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.9)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
-        // Curriculum Tabs
-        const tabs = document.querySelectorAll('.curriculum-tab');
-        const contents = document.querySelectorAll('.curriculum-content');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Reset Tabs
-                tabs.forEach(t => {
-                    t.classList.remove('bg-crescent-blue/20', 'border-crescent-blue');
-                    t.classList.add('border-transparent');
-                    t.querySelector('span').classList.remove('text-white');
-                    t.querySelector('span').classList.add('text-slate-400');
-                    t.querySelector('i').classList.remove('text-crescent-blue', 'opacity-100');
-                    t.querySelector('i').classList.add('text-slate-400', 'opacity-0');
-                });
-
-                // Activate Clicked Tab
-                tab.classList.remove('border-transparent');
-                tab.classList.add('bg-crescent-blue/20', 'border-crescent-blue');
-                tab.querySelector('span').classList.remove('text-slate-400');
-                tab.querySelector('span').classList.add('text-white');
-                tab.querySelector('i').classList.remove('text-slate-400', 'opacity-0');
-                tab.querySelector('i').classList.add('text-crescent-blue', 'opacity-100');
-
-                // Show Content
-                const targetId = tab.getAttribute('data-target');
-
-                contents.forEach(content => {
-                    if (content.id === targetId) {
-                        content.classList.remove('opacity-0', 'translate-x-10', 'pointer-events-none');
-                        content.classList.add('opacity-100', 'translate-x-0', 'z-10');
-                    } else {
-                        content.classList.remove('opacity-100', 'translate-x-0', 'z-10');
-                        content.classList.add('opacity-0', 'translate-x-10', 'pointer-events-none');
-                    }
-                });
-            });
-        });
-
-        // Canvas Animation (Constellation Effect)
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width, height;
-        let particles = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-
-            draw() {
-                ctx.fillStyle = 'rgba(59, 130, 246, 0.5)'; // Blue tint
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const numParticles = Math.min(window.innerWidth / 10, 100); // Responsive count
-            for (let i = 0; i < numParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-
-            particles.forEach((p, index) => {
-                p.update();
-                p.draw();
-
-                // Draw connections
-                for (let j = index + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(127, 29, 29, ${1 - distance / 150})`; // Maroon tint lines
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        initParticles();
-        animate();
-
-    </script>
+    <!-- External Scripts -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
-<!-- Deployment trigger -->
