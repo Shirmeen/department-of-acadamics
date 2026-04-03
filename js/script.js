@@ -161,7 +161,7 @@ if (canvas) {
         }
 
         draw() {
-            ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
+            ctx.fillStyle = 'rgba(30, 58, 138, 0.7)'; // Darker Blue dots
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -188,7 +188,7 @@ if (canvas) {
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < 150) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(59, 130, 246, ${0.2 * (1 - dist / 150)})`;
+                    ctx.strokeStyle = `rgba(30, 58, 138, ${0.4 * (1 - dist / 150)})`; // Darker Blue lines
                     ctx.lineWidth = 0.5;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
